@@ -1,0 +1,14 @@
+You are given a node del_node of a Singly Linked List where you have to delete a value of the given node from the linked list but you are not given the head of the list.
+cpp without driver's code:
+class Solution
+{
+    public:
+    //Function to delete a node without any reference to head pointer.
+    void deleteNode(Node *del_node)
+    {
+       // Node *temp = del_node->next;
+        del_node -> data = del_node -> next -> data;
+        del_node -> next = del_node -> next -> next; 
+    }
+
+};
