@@ -1,0 +1,36 @@
+Given two linked list head1 and head2 with distinct elements, determine the count of all distinct pairs from both lists whose sum is equal to the given value x.
+cpp solution without driver's code:
+Structure of the node of the linked list is as
+struct Node
+{
+    int data;
+    struct Node* next;
+
+    Node(int x){
+        data = x;
+        next = NULL;
+    }
+};
+*/
+class Solution{
+  public:
+    // your task is to complete this function
+    int countPairs(struct Node* head1, struct Node* head2, int x) {
+         int c=0;
+        Node* ptr1=head1;
+        Node* ptr2=head2;
+        unordered_map<int,int>mp;
+        while(ptr1!=NULL){
+            mp[ptr1->data]++;
+            ptr1=ptr1->next;
+        }
+        while(ptr2!=NULL){
+            int temp=x-ptr2->data;
+            if(mp.find(temp)!=mp.end()){
+                c++;
+            }
+            ptr2=ptr2->next;
+        }
+        return c;
+    }
+};
