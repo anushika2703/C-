@@ -1,0 +1,27 @@
+Given a binary tree having n nodes. Find the sum of all nodes on the longest path from root to any leaf node. If two or more paths compete for the longest path, then the path having maximum sum of nodes will be considered.
+cpp code without driver's code:
+class Solution{
+public:
+    int height(Node* root){
+        if(!root) return 0;
+        return 1+max(height(root->left), height(root->right));
+    }
+    void solve(Node* root, int tot, int height, int &res){
+        if(height==0){
+            res=max(res, tot);
+            return;
+        }
+        
+        if(!root) return;
+        solve(root->left, tot+root->data, height-1, res);
+        solve(root->right, tot+root->data, height-1, res);
+    }
+    int sumOfLongRootToLeafPath(Node *root){
+        int h=height(root);
+        
+        int res=INT_MIN;
+        solve(root, 0, h, res);
+        return res;
+        
+    }
+};
