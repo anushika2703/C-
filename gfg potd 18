@@ -1,0 +1,23 @@
+Given a positive integer n. Your task is to generate a string list of all n-bit binary numbers where, for any prefix of the number, there are more or an equal number of 1's than 0's. The numbers should be sorted in decreasing order of magnitude.
+cpp code without driver's code:
+class Solution {
+public:
+    vector<string> v;
+    
+    void generate(string s, int size, int ones, int zeros, int n) {
+        if (size == n) {
+            v.push_back(s);
+            return;
+        }
+        generate(s + "1", size + 1, ones + 1, zeros, n);
+        if(ones >= zeros+1)
+        generate(s + "0", size + 1, ones, zeros + 1, n);
+    }
+    
+    vector<string> NBitBinary(int n) {
+        string s = "1";
+        generate(s, 1, 1, 0, n);
+        sort(v.rbegin(), v.rend());
+        return v;
+    }
+};
