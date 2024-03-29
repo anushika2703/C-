@@ -1,0 +1,19 @@
+ task is to complete the function isEularCircuitExist() which takes v and adjacency list adj[] as input parameter and returns boolean value 1 if Eular circuit exists otherwise returns 0.
+cpp code without driver's code:
+
+class Solution {
+public:
+          bool isEularCircuitExist(int V, vector<int>adj[]){
+        // Code here
+       // vector<int>vis(V,0);
+        int count=0;
+        for(int i=0;i<V;i++){
+            {
+                if(adj[i].size()%2!=0){
+                    return false;
+                }
+            }
+        }
+        return true;
+}
+};
