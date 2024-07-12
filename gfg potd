@@ -1,0 +1,21 @@
+Given a binary tree and an integer target, check whether there is a root-to-leaf path with its sum as target.
+Code in CPP:
+class Solution {
+  public:
+    bool hasPathSum(Node *root, int target) {
+        // Your code here
+        if(root==NULL)
+        return false;
+        if(target<0)
+        return false;
+        if(root->left==NULL && root->right==NULL)
+        {
+            return target==root->data;
+               
+        }
+        
+        bool lt=hasPathSum(root->left,target-root->data);
+        bool rt=hasPathSum(root->right,target-root->data);
+        return lt||rt;
+    }
+};
